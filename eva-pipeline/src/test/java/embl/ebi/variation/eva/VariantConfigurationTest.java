@@ -56,11 +56,17 @@ public class VariantConfigurationTest extends AbstractTransactionalJUnit4SpringC
     @Autowired
     VariantConfiguration variantConfiguration;
 
+    @Autowired
+    private JobExecution jobExecution;
+
+
 //    @Autowired
 //    JobLauncher jobLauncher;
 
-    @Autowired
-    private JobLauncherTestUtils jobLauncherTestUtils;
+//    @Autowired
+//    private JobLauncherTestUtils jobLauncherTestUtils;
+
+
 
 //    @Bean
 //    public JobLauncherTestUtils jobLauncherTestUtils(JobRepository jobRepository, JobLauncher jobLauncher, Job job) {
@@ -123,6 +129,7 @@ public class VariantConfigurationTest extends AbstractTransactionalJUnit4SpringC
                 "--dbName=" + dbName,
                 "--fileId=10",
                 "--calculateStats=false",
+//                "--batch.jobs.names=none"
         };
 
         Application.main(args);
@@ -138,7 +145,7 @@ public class VariantConfigurationTest extends AbstractTransactionalJUnit4SpringC
 
         ////////
 
-        JobExecution jobExecution = jobLauncherTestUtils.launchJob();
+//        JobExecution jobExecution = jobLauncherTestUtils.launchJob();
         assertEquals("COMPLETED", jobExecution.getExitStatus().toString());
     }
 
